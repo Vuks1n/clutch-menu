@@ -1,3 +1,4 @@
+vibe coded cuz the whole game vibe coded lol
 # Clutch Menu
 
 A browser overlay menu for the game at **clutcher.io**, built as a study project for how browser games expose their internals (game state on `window`, mutable camera/weapon objects, etc).
