@@ -1,0 +1,257 @@
+#cheat-gui {
+  --ac: #5b8cff;
+  --bg0: rgba(10, 12, 17, 0.97);
+  --bg1: #14171f;
+  --bg2: #1a1e29;
+  --line: #232838;
+  --txt: #cdd5e4;
+  --txt2: #78829b;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 340px;
+  background: var(--bg0);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--txt);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 13px;
+  z-index: 999999;
+  display: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  user-select: none;
+  overflow: hidden;
+}
+
+/* ==== header / drag bar ==== */
+#cheat-gui .hdr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: var(--bg1);
+  border-bottom: 1px solid var(--line);
+  cursor: move;
+}
+#cheat-gui .hdr .logo {
+  width: 8px; height: 8px; border-radius: 2px;
+  background: var(--ac);
+  box-shadow: 0 0 8px var(--ac);
+}
+#cheat-gui .hdr b { font-size: 13px; letter-spacing: 0.3px; }
+#cheat-gui .hdr .ver { color: var(--txt2); font-size: 11px; }
+#cheat-gui .hdr .sp { flex: 1; }
+#cheat-gui .hdr .xbtn {
+  background: none; border: none; color: var(--txt2);
+  font-size: 14px; cursor: pointer; padding: 0 4px; line-height: 1;
+}
+#cheat-gui .hdr .xbtn:hover { color: #fff; }
+
+/* ==== body: sidebar + pages ==== */
+#cheat-gui .body { display: flex; min-height: 260px; }
+#cheat-gui .side {
+  width: 82px;
+  background: var(--bg1);
+  border-right: 1px solid var(--line);
+  padding: 8px 0;
+  display: flex; flex-direction: column; gap: 2px;
+}
+#cheat-gui .tab {
+  padding: 9px 12px;
+  color: var(--txt2);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all 0.12s;
+}
+#cheat-gui .tab:hover { color: var(--txt); }
+#cheat-gui .tab.on {
+  color: var(--txt);
+  border-left-color: var(--ac);
+  background: var(--bg2);
+}
+#cheat-gui .page { flex: 1; display: none; padding: 10px; overflow-y: auto; max-height: 420px; }
+#cheat-gui .page.on { display: block; }
+
+/* ==== sections ==== */
+#cheat-gui .sec {
+  background: var(--bg1);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+#cheat-gui .sec h3 {
+  margin: 0 0 6px 0;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--txt2);
+}
+
+/* ==== rows ==== */
+#cheat-gui .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 24px;
+  gap: 8px;
+}
+#cheat-gui .row span.lbl { color: var(--txt); }
+
+/* ==== checkbox (neverlose square style) ==== */
+#cheat-gui .ck { position: relative; width: 15px; height: 15px; flex: none; }
+#cheat-gui .ck input { display: none; }
+#cheat-gui .ck .bx {
+  position: absolute; inset: 0;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--bg2);
+  transition: all 0.12s;
+  cursor: pointer;
+}
+#cheat-gui .ck .bx::after {
+  content: '';
+  position: absolute; inset: 3px;
+  background: var(--ac);
+  border-radius: 1.5px;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: all 0.12s;
+}
+#cheat-gui .ck input:checked + .bx { border-color: var(--ac); }
+#cheat-gui .ck input:checked + .bx::after { opacity: 1; transform: scale(1); }
+
+/* ==== slider ==== */
+#cheat-gui .sld { display: block; padding: 2px 0 4px 0; }
+#cheat-gui .sld .top { display: flex; justify-content: space-between; }
+#cheat-gui .sld .val { color: var(--ac); font-weight: 600; font-size: 12px; }
+#cheat-gui input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%; height: 4px;
+  background: var(--bg2);
+  border-radius: 2px;
+  outline: none;
+  margin: 6px 0 2px 0;
+}
+#cheat-gui input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--ac);
+  cursor: pointer;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--ac) 60%, transparent);
+}
+
+/* ==== select ==== */
+#cheat-gui select {
+  background: var(--bg2);
+  color: var(--txt);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 3px 6px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ==== buttons ==== */
+#cheat-gui .btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px;
+  background: var(--ac);
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  transition: filter 0.12s;
+}
+#cheat-gui .btn:hover { filter: brightness(1.15); }
+#cheat-gui .btn.ghost { background: var(--bg2); color: var(--txt); border: 1px solid var(--line); }
+#cheat-gui .btn.danger { background: #e5484d; }
+
+/* ==== credits ==== */
+#cheat-gui .credit {
+  color: var(--txt);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+#cheat-gui .credit b { color: var(--ac); letter-spacing: 0.3px; }
+#cheat-gui .credit.small { color: var(--txt2); font-size: 11px; }
+#cheat-gui .credit .clabel {
+  display: block;
+  color: var(--txt2);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 4px;
+}
+#cheat-gui .credit .btn {
+  margin-top: 0;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+/* ==== accent color dots ==== */
+#cheat-gui .dots { display: flex; gap: 8px; margin-top: 4px; }
+#cheat-gui .dot {
+  width: 18px; height: 18px; border-radius: 50%;
+  cursor: pointer; border: 2px solid transparent;
+}
+#cheat-gui .dot.on { border-color: #fff; }
+
+/* ==== radar ==== */
+#wc-radar {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(10, 12, 17, 0.85);
+  border: 1px solid #232838;
+  border-radius: 6px;
+  z-index: 999998;
+  display: none;
+  pointer-events: none;
+}
+
+/* ==== watermark ==== */
+#wc-wm {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  background: rgba(10, 12, 17, 0.9);
+  border: 1px solid var(--ac, #5b8cff);
+  border-radius: 4px;
+  color: #cdd5e4;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 11px;
+  padding: 4px 8px;
+  z-index: 999998;
+  display: none;
+  pointer-events: none;
+}
+
+/* ==== toast ==== */
+#cheat-toast {
+  position: fixed;
+  bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(10, 12, 17, 0.95);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--ac, #5b8cff);
+  color: #cdd5e4;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 12.5px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  z-index: 1000000;
+  opacity: 0;
+  transition: all 0.2s;
+  pointer-events: none;
+}
+#cheat-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }

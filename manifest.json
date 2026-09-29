@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Clutch Menu",
+  "version": "1.0.0",
+  "description": "Overlay menu for clutcher.io. Educational / research purposes only.",
+  "content_scripts": [
+    {
+      "matches": ["https://clutcher.io/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    }
+  ]
+}
